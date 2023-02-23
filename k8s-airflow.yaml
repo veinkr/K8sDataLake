@@ -1,0 +1,36 @@
+webserverSecretKey: d146833dbd89a26eca0b774f896fd459
+
+images:
+  airflow:
+    repository: airflow
+    tag: dev
+
+webserver:
+  replicas: 1
+  service:
+    # type: LoadBalancer
+    type: NodePort
+    ports:
+      - name: airflow-ui
+        port: 8080
+        targetPort: 8080
+        nodePort: 31259
+
+scheduler:
+  replicas: 1
+
+workers:
+  keda:
+    enabled: true
+
+env:
+  - name: AIRFLOW__WEBSERVER__DEFAULT_UI_TIMEZONE
+    value: Asia/Shanghai
+  - name: AIRFLOW__CORE__DEFAULT_TIMEZONE
+    value: Asia/Shanghai
+
+extraEnv: |-
+  - name: NODE_IP
+    valueFrom:
+      fieldRef:
+        fieldPath: status.hostIP
