@@ -20,7 +20,7 @@ WIKI: https://github.com/veinkr/K8sDataLake/wiki
 9. Dashboard 
 10. K8s Backup/Migration  
 11. Flink  
-
+12. Node Selector Strategy(affinities/tolerations)  
 
 ## Reference
 
