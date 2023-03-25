@@ -3,7 +3,6 @@ webserverSecretKey: d146833dbd89a26eca0b774f896fd459
 images:
   airflow:
     repository: airflow
-    tag: dev
 
 webserver:
   replicas: 1
@@ -14,7 +13,7 @@ webserver:
       - name: airflow-ui
         port: 8080
         targetPort: 8080
-        nodePort: 31259
+        nodePort: 32256
 
 scheduler:
   replicas: 1
@@ -30,7 +29,7 @@ env:
     value: Asia/Shanghai
 
 extraEnv: |-
-  - name: NODE_IP
+  - name: hostIP
     valueFrom:
       fieldRef:
         fieldPath: status.hostIP

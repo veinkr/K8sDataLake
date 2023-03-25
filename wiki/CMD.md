@@ -24,4 +24,4 @@ helm uninstall airflow --namespace airflow
 kubectl -n airflow exec -it airflow-webserver-58768b8cd9-nj5rt  /bin/bash
 kubectl -n airflow logs airflow-scheduler-7c78f5659-sn6jk
 
-k3s kubectl port-forward svc/airflow-webserver 1259:8080 --namespace airflow --address '0.0.0.0'
+kubectl port-forward svc/airflow-webserver 1259:8080 --namespace airflow --address '0.0.0.0'

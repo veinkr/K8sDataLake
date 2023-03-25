@@ -35,9 +35,9 @@ RUN pip install --user  -i https://pypi.tuna.tsinghua.edu.cn/simple polars[all]
 COPY requirements.txt ${AIRFLOW_HOME}
 RUN pip install --user  -i https://pypi.tuna.tsinghua.edu.cn/simple -r "${AIRFLOW_HOME}/requirements.txt"
 
-# COPY dw_tool ${AIRFLOW_HOME}
-# RUN pip install --upgrade --force-reinstall ${AIRFLOW_HOME}/dw_tool
+COPY dw_tool-0.1-py3-none-any.whl ${AIRFLOW_HOME}
+RUN pip install --upgrade --no-deps --force-reinstall ${AIRFLOW_HOME}/dw_tool-0.1-py3-none-any.whl
 
-COPY dags ${AIRFLOW_HOME}/dags
+COPY airflow/dags ${AIRFLOW_HOME}/dags
 
 
